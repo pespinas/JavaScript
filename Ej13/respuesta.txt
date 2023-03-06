@@ -1,0 +1,1 @@
+Primero entrara en el if y luego ira entrando en el else hasta que numero = 0
