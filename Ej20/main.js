@@ -1,33 +1,22 @@
-$(document).ready(function() {
-    let estadoComida=100;
-    let estadoJuego=100;
-    let estadoLucha=100;
-    let estadoDormir=100;
-    let estadoVida=100;
-    let barraComida = $('#cBarra');
-    let barraJuego = $('#jBarra');
-    let barraLucha = $('#lBarra');
-    let barraDormir = $('#dBarra');
-    let barraVida = $('#pBarra');
-    let txtDormir = $('#txtDormir');
-    let txtComida= $('#txtComer');
-    let txtJuego= $('#txtJugar');
-    let txtLucha= $('#txtLuchar');
-    let txtVida= $('#txtPokemon');
-    let intervalo = 3000; // 10 segundo
+let estadoComida=100;
+let estadoJuego=100;
+let estadoLucha=100;
+let estadoDormir=100;
+let estadoVida=100;
+let barraComida = $('#cBarra');
+let barraJuego = $('#jBarra');
+let barraLucha = $('#lBarra');
+let barraDormir = $('#dBarra');
+let barraVida = $('#pBarra');
+let txtDormir = $('#txtDormir');
+let txtComida= $('#txtComer');
+let txtJuego= $('#txtJugar');
+let txtLucha= $('#txtLuchar');
+let txtVida= $('#txtPokemon');
+let intervalo = 3000; // 10 segundo
 
+$(document).ready(function() {
     // Definimos la función que se ejecutará cada intervalo de tiempo
-    let restar = setInterval(function() {
-        estadoComida -= Math.floor(Math.random() * 3) + 1;
-        estadoDormir -= Math.floor(Math.random() * 3) + 1;
-        estadoJuego -= Math.floor(Math.random() * 3) + 1;
-        estadoLucha -= Math.floor(Math.random() * 3) + 1;
-        updateBarra();
-        // Si la variable llega a cero, detenemos el intervalo
-        if (estadoComida <= 0 && estadoDormir <= 0 && estadoJuego <= 0 && estadoLucha <= 0) {
-            clearInterval(restar);
-        }
-    }, intervalo);
     $('.comer1, .comer2, .comer3').click(function() {
        comer($(this).val());
        updateBarra();
@@ -45,7 +34,21 @@ $(document).ready(function() {
         dormir($(this).val());
         updateBarra();
     });
-    function updateBarra() {
+    
+
+});
+let restar = setInterval(function() {
+    estadoComida -= Math.floor(Math.random() * 3) + 1;
+    estadoDormir -= Math.floor(Math.random() * 3) + 1;
+    estadoJuego -= Math.floor(Math.random() * 3) + 1;
+    estadoLucha -= Math.floor(Math.random() * 3) + 1;
+    updateBarra();
+    // Si la variable llega a cero, detenemos el intervalo
+    if (estadoComida <= 0 && estadoDormir <= 0 && estadoJuego <= 0 && estadoLucha <= 0) {
+        clearInterval(restar);
+    }
+}, intervalo);
+function updateBarra() {
         ceroEnjoyer(barraComida,txtComida,estadoComida);
         ceroEnjoyer(barraDormir,txtDormir,estadoDormir);
         ceroEnjoyer(barraJuego,txtJuego,estadoJuego);
@@ -158,5 +161,3 @@ $(document).ready(function() {
             añadir(-5,-5,-5,10,5);
         }
      }
-
-});
